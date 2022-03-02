@@ -17,11 +17,11 @@ printThis.bind(42)();
 //   var: scoped to the enclosing function
 //   let: scoped to the enclosing block
 function scopeTest() {
-  var outerVar = 'outer var';
-  let outerLet = 'outer let';
+  var outerVar = "outer var";
+  let outerLet = "outer let";
   if (true) {
-    var innerVar = 'inner var';
-    let innerLet = 'inner let';
+    var innerVar = "inner var";
+    let innerLet = "inner let";
   }
 }
 scopeTest();
@@ -37,14 +37,14 @@ function printNumbers() {
 printNumbers();
 
 // let, const
-const name = 'Dave';
+const name = "Dave";
 // name = 'Someone else';
 console.log(name);
 
 const person = {
-  name: 'Dave'
+  name: "Dave",
 };
-person.name = 'someone else';
+person.name = "someone else";
 console.log(person);
 
 const nums = [1, 2, 3];
@@ -75,25 +75,50 @@ function stuff() {
 }
 
 if (Math.random() > 0.5) {
-  a = 'yes';
+  a = "yes";
 } else {
-  a = 'no';
+  a = "no";
 }
 
-a = Math.random() > 0.5 ? 'yes' : 'no';
+a = Math.random() > 0.5 ? "yes" : "no";
 
 // Template Strings a.k.a. String Interpolation
 
-const firstName = 'Dave';
-const lastName = 'Ceddia';
+const firstName = "Dave";
+const lastName = "Ceddia";
 const usesReact = false;
 
 const fullName = `${firstName} ${lastName}`;
 console.log(fullName);
 
-const summary = `${fullName} ${usesReact ? 'uses React' : "doesn't use React"}`;
+const summary = `${fullName} ${usesReact ? "uses React" : "doesn't use React"}`;
 console.log(summary);
 
 const add = (a, b) => a + b;
 const answer = `The answer is ${add(40, 2)}`;
 console.log(answer);
+
+// Rest & Spread operators
+// 2 names for three dots that look the same
+
+function printArgs(first, second, ...rest) {
+  console.log(first, second, rest);
+}
+
+const user = {
+  username: "dceddia",
+  lastName: "Ceddia",
+};
+console.log({
+  firstName: "Default",
+  ...user,
+  fullName: `${user.firstName} ${user.lastName}`,
+});
+
+const DEBUG = false;
+const debug = (...args) => {
+  if (DEBUG) {
+    console.log(...args);
+  }
+};
+debug("this", "works", "great");
