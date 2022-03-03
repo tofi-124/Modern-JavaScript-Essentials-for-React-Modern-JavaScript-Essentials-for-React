@@ -227,11 +227,37 @@ const moreNumbers = [5, 6, 7, 8];
 console.log(numbers.concat(1000));
 console.log(numbers.concat(1000, 200, 300));
 console.log(numbers.concat(moreNumbers));
-console.log([
-    0,
-    ...numbers,
-    4.5,
-    ...moreNumbers,
-    9
-]);
+console.log([0, ...numbers, 4.5, ...moreNumbers, 9]);
 console.log(numbers);
+
+//Map & Filtering
+const people = [
+  {
+    first: "Dan",
+    last: "Abramov",
+    handle: "@dan_abramov",
+  },
+  {
+    first: "Ali",
+    last: "Spittel",
+    handle: "@ASpittel",
+  },
+  {
+    first: "Sarah",
+    last: "Drasner",
+    handle: "@sarah_edo",
+  },
+];
+
+const names = people.map((person, index) => {
+  return {
+    ...person,
+    first: person.first + "!!!",
+  };
+});
+console.log(names);
+console.log(people);
+
+const filteredNames =  people.filter(person => {
+  return person.id === 4;
+})
