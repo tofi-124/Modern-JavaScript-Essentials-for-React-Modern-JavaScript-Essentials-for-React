@@ -122,7 +122,7 @@ const debug = (...args) => {
   }
 };
 debug("this", "works", "great");
- // Destructuring arrays and objects
+// Destructuring arrays and objects
 
 const nums = [1, 2, 3, 4, 5];
 
@@ -131,15 +131,15 @@ console.log(a, b, others);
 console.log(nums);
 
 const user = {
-  username: 'dceddia',
-  firstName: 'Dave',
-  lastName: 'Ceddia',
-  fullName: 'D C'
+  username: "dceddia",
+  firstName: "Dave",
+  lastName: "Ceddia",
+  fullName: "D C",
 };
 const { username: uname, firstName } = user;
 console.log(uname, firstName);
 
-const { fullName = 'MISSING' } = user;
+const { fullName = "MISSING" } = user;
 console.log(fullName);
 
 const { username, ...name } = user;
@@ -149,17 +149,17 @@ console.log(user);
 /// multi-level destructuring
 
 const user2 = {
-  username: 'dceddia',
-  firstName: 'Dave',
-  lastName: 'Ceddia',
+  username: "dceddia",
+  firstName: "Dave",
+  lastName: "Ceddia",
   posts: [
-    { id: 1, title: 'Best Post Ever' },
-    { id: 2, title: 'Second Post Ever' }
-  ]
+    { id: 1, title: "Best Post Ever" },
+    { id: 2, title: "Second Post Ever" },
+  ],
 };
 
 const {
-  posts: [{ title }, { title: t2 }]
+  posts: [{ title }, { title: t2 }],
 } = user2;
 console.log(title);
 console.log(t2);
@@ -168,3 +168,25 @@ console.log(posts);
 function Counter({ initialCount }) {
   const [count, setCount] = useState(initialCount);
 }
+
+const nums = [1, 2, 3, 4];
+const user = {
+  username: "dceddia",
+  firstName: "Dave",
+  lastName: "Ceddia",
+  posts: ["a", "b", "c"],
+};
+
+//after-immutability/
+function setName(user, newName) {
+  return {
+    ...user,
+    firstName: newName,
+    posts: [...user.posts, "d"],
+  };
+}
+console.log(user);
+const newUser = setName(user, "someone else");
+console.log(newUser);
+console.log(user === newUser);
+console.log(user.posts === newUser.posts);
