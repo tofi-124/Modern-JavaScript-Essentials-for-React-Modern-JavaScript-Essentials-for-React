@@ -193,19 +193,45 @@ console.log(user.posts === newUser.posts);
 
 //find and findIndex
 const spices = [
-  { id: 1, name: 'Black Pepper' },
-  { id: 2, name: 'Turmeric' },
-  { id: 3, name: 'Cumin' },
-  { id: 4, name: 'Coriander' },
-  { id: 6, name: 'Coriander' },
-  { id: 7, name: 'Coriander' },
-  { id: 5, name: 'Chili Powder' }
+  { id: 1, name: "Black Pepper" },
+  { id: 2, name: "Turmeric" },
+  { id: 3, name: "Cumin" },
+  { id: 4, name: "Coriander" },
+  { id: 6, name: "Coriander" },
+  { id: 7, name: "Coriander" },
+  { id: 5, name: "Chili Powder" },
 ];
 
-const spiceIndex = spices.findIndex(spice => {
-  return spice.name === 'Coriander'
+const spiceIndex = spices.findIndex((spice) => {
+  return spice.name === "Coriander";
 });
 
-const spice = spices.find(spice => {
-  return spice.name === 'cumin'
-})
+const spice = spices.find((spice) => {
+  return spice.name === "cumin";
+});
+
+//Splice and slice
+const word = ["c", "o", "d", "e"];
+let copy = [...word];
+copy.splice(1, 2, "x", "y");
+console.log(copy);
+console.log(word);
+
+//Concat
+const numbers = [1, 2, 3, 4];
+const moreNumbers = [5, 6, 7, 8];
+
+// console.log(numbers.push(1000))  // modifies 'numbers'
+
+// a few ways to add items to an array immutably:
+console.log(numbers.concat(1000));
+console.log(numbers.concat(1000, 200, 300));
+console.log(numbers.concat(moreNumbers));
+console.log([
+    0,
+    ...numbers,
+    4.5,
+    ...moreNumbers,
+    9
+]);
+console.log(numbers);
