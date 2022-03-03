@@ -259,5 +259,40 @@ console.log(names);
 console.log(people);
 
 const filteredNames =  people.filter(person => {
-  return person.id === 4;
+  return person.name === 'Sarah';
 })
+
+//Reduce
+const veggieDrawer = [
+  "3 apples",
+  "2 bad tomatoes",
+  "fresh celery",
+  "4 good onions",
+  "1 bad onion",
+  "rotten cilantro",
+  "2 rotten red peppers",
+  "garlic",
+];
+
+function reducer(bucket, item) {
+  const count = parseInt(item);
+  if (item.includes("bad") || item.includes("rotten")) {
+    bucket.badVeggies.push(item);
+    bucket.howManygoodVeggies += isNaN(count) ? 1 : count;
+    return bucket;
+  } else {
+    bucket.goodVeggies.push(item);
+    bucket.howManybadVeggies += isNaN(count) ? 1 : count;
+    return bucket;
+  }
+}
+
+initialItem = {
+  goodVeggies: [],
+  howManygoodVeggies: 0,
+  badVeggies: [],
+  howManybadVeggies: 0,
+};
+Veggies = veggieDrawer.reduce(reducer, initialItem);
+
+console.log(Veggies);
